@@ -1,68 +1,128 @@
 import React, { useState, useEffect } from 'react';
 
-// Roadmap Steps Data
-const stepsData = {
-  1: {
-    title: "Lets Get Started",
+// Roadmap Steps Data (10 Steps matching buildahome.in)
+const howItWorksData = [
+  {
+    num: "01",
+    title: "Enquiry & Consultation",
+    subTitle: "Initiating Your Journey with Experts",
     desc: "Enquire and schedule a detailed appointment with our structural experts to discuss your spatial requirements. Through virtual and physical sessions, our technical engineers ensure that no detail is overlooked, creating an initial high-fidelity blueprint.",
     img: "/project_house1.png",
     bullets: [
       "Understanding construction and budget goals.",
-      "Discussing spatial requirements and layouts.",
-      "Personalized customer portal launch."
-    ]
+      "Scheduling site visit and consultation."
+    ],
+    iconClass: "fa-solid fa-phone"
   },
-  2: {
-    title: "Design Specification",
-    desc: "Our architects work closely with your preferences to produce premium 3D design visualizations, elevation drafts, and comprehensive interior layout options optimized for solar layout and ventilation flows.",
+  {
+    num: "02",
+    title: "Professional Site Inspection",
+    subTitle: "Rigorous Evaluation of Your Plot",
+    desc: "We conduct a thorough physical survey of your plot, evaluating soil bearing capacity, level measurements, and neighborhood boundaries to plan structural loads accurately.",
     img: "/project_house2.png",
     bullets: [
-      "Vastu compliance and micro-ventilation layout.",
-      "Interactive 3D walkthrough rendering drafts.",
-      "Detailed material schedule workbook approvals."
-    ]
+      "Comprehensive soil testing and topography mapping.",
+      "Water source and power availability check."
+    ],
+    iconClass: "fa-solid fa-map-location-dot"
   },
-  3: {
-    title: "Client Agreement",
-    desc: "We formulate a fully transparent, legal engineering contract defining locking pricing schedules, complete brand list parameters, milestone dates, and compensation rules for total protection.",
+  {
+    num: "03",
+    title: "Design and Planning",
+    subTitle: "Shaping Your Vision into a Solid Plan",
+    desc: "Once the advance is made, we begin the design phase where our team conceptualizes your specific requirements and translates them into a virtual blueprint. This includes both the floor plan and the elevation, tailored to your preferences and Vaastu compliance. Our design team will also present you with various design options, ensuring that the final plan meets your expectations.",
+    img: "/completed_project_1.png",
+    bullets: [
+      "Provide comprehensive 3D architectural floor plan and elevation designs.",
+      "A key priority is ensuring the design is Vaastu compliant."
+    ],
+    iconClass: "fa-solid fa-pen-ruler"
+  },
+  {
+    num: "04",
+    title: "Proposal and Quotation",
+    subTitle: "High time to wrap up the paperwork and confirm the timeline",
+    desc: "Once the design is finalized, we provide a transparent, fixed-cost quote with no hidden fees. Following detailed discussions, we finalize the house construction cost, and further confirm the schedule and work plan, ensuring full transparency from day one. Our commitment to clear pricing and a detailed timeline guarantees confidence.",
+    img: "/completed_project_2.png",
+    bullets: [
+      "Comprehensive Proposal with a Fixed Quotation.",
+      "Transparent Pricing with a Fixed Timeline."
+    ],
+    iconClass: "fa-solid fa-calculator"
+  },
+  {
+    num: "05",
+    title: "Agreement and Contract",
+    subTitle: "Navigating Agreements and Contracts with Confidence",
+    desc: "Once the design is approved and the costing is finalized, we move forward with completing the necessary paperwork and signing the construction agreement. This agreement will lock in the fixed cost and ensure that no subcontracting takes place at any stage of the project. Upon signing, our team will provide a detailed agenda outlining the work plan and finalizing the project schedule.",
+    img: "/completed_project_3.png",
+    bullets: [
+      "Clear Agreement and No Subcontracting Business.",
+      "Detailed outline of the agenda and project schedule."
+    ],
+    iconClass: "fa-solid fa-file-signature"
+  },
+  {
+    num: "06",
+    title: "Pre-Construction Preparation",
+    subTitle: "Your Roadmap to a Successful Construction Start",
+    desc: "As part of our standard practice, our team of architects, structural and MEP designers, and the executive team will guide you through every step of this process, ensuring you make informed decisions to bring the agreed-upon house construction plan to life. At this stage, we initiate all essential backend work, including material procurement and organizing the labor team.",
+    img: "/completed_project_4.png",
+    bullets: [
+      "Meticulous Planning and Clear Project Tracking.",
+      "Work Schedule and On-Time Start."
+    ],
+    iconClass: "fa-solid fa-clipboard-list"
+  },
+  {
+    num: "07",
+    title: "Excavation & Foundation",
+    subTitle: "Laying a Strong Foundation for Your Home",
+    desc: "We start civil excavation at the site, followed by laying the reinforcement steel and casting footings. A strong foundation ensures the structural longevity of your building, keeping it safe from shifting soil and water absorption.",
     img: "/project_house1.png",
     bullets: [
-      "Zero hidden pricing clause locking guarantee.",
-      "Detailed specifications check by customer advocates.",
-      "Escrow payment protection system set up."
-    ]
+      "Precise excavation according to structural plans.",
+      "Anti-termite soil treatment and PCC layering."
+    ],
+    iconClass: "fa-solid fa-trowel"
   },
-  4: {
-    title: "Construction & Updates",
-    desc: "Excavation and bricklaying structures start on site under continuous supervision of our experienced structural engineers. Get real-time updates directly via your dedicated mobile tracker.",
+  {
+    num: "08",
+    title: "Structure & Column Casting",
+    subTitle: "Erecting the Backbone of the House",
+    desc: "Our engineers supervise the beam and roof slab casting, conducting strict concrete slump and cube compression tests to verify the quality. The columns and frame form the robust structural skeleton of your home.",
     img: "/project_house2.png",
     bullets: [
-      "300+ rigorous physical tests during slab casting.",
-      "Daily status photo stream directly in customer dashboard.",
-      "Raw materials checks verifying premium brands."
-    ]
+      "High-grade RCC column and beam casting.",
+      "Roof slab reinforcement and quality casting checks."
+    ],
+    iconClass: "fa-solid fa-trowel-bricks"
   },
-  5: {
-    title: "Site Visits",
-    desc: "Detailed plumbing, premium wiring paths, high-finish ceiling installations, tiling masonry, and wood millwork are double-audited by independent safety and certification agencies.",
+  {
+    num: "09",
+    title: "Brickwork & Plastering",
+    subTitle: "Shaping the Rooms and Spaces",
+    desc: "We build internal partition walls to define room dimensions. Our masons apply double-layer plastering to guarantee smooth walls, perfect alignments, and excellent water-resistant properties before painting.",
     img: "/project_house1.png",
     bullets: [
-      "Independent structural integrity assessment reports.",
-      "Dual pressure piping tests for waterproofing verification.",
-      "Electrical safety audits against spark vulnerabilities."
-    ]
+      "Solid cement block masonry for walls.",
+      "Dual-layer internal and external plastering."
+    ],
+    iconClass: "fa-solid fa-paint-roller"
   },
-  6: {
-    title: "Completion & Handover",
-    desc: "Walk into your pristine, professionally deep-cleaned custom dream villa! We formally hand over complete documentation dossiers along with your 10-year waterproofing warranty card.",
+  {
+    num: "10",
+    title: "Project Handover",
+    subTitle: "Handing Over the Keys to Your New Home with Care",
+    desc: "The ultimate project handover marks the successful completion of your home construction journey with us and is ready for the transition of the fully finished property to your joy. This final phase includes an exhaustive final inspection to ensure that every feature meets the agreed specifications. It is time to hand over all necessary documentation, featuring warranties and maintenance guides, to ensure you are totally satisfied before officially handing over the keys.",
     img: "/project_house2.png",
     bullets: [
-      "Detailed digital dossiers of architectural blueprint assets.",
-      "Dedicated manager for 5-year post-handover issues.",
-      "10-year waterproofing warranty card delivery."
-    ]
+      "Complete Final Inspection and handover kit is given.",
+      "Ongoing Support and Satisfaction Assurance."
+    ],
+    iconClass: "fa-solid fa-key"
   }
-};
+];
 
 // Testimonials Data
 const testiData = {
@@ -168,6 +228,86 @@ const projectsData = [
   { id: 8, title: "Royal Legacy Mansion", location: "Jayanagar, Bengaluru", img: "/completed_project_4.png" }
 ];
 
+// Our Homes Data
+const ourHomesData = [
+  {
+    id: 1,
+    name: "Vipul's Dream Home",
+    package: "Premium",
+    location: "Shivaramkaranth Nagar",
+    area: "3,735 sqft",
+    floors: "G+2.5",
+    price: "₹74 Lakhs",
+    duration: "12 Months",
+    coverImg: "/completed_project_1.png",
+    phases: [
+      { label: "Foundation & Slab", img: "/completed_project_1.png" },
+      { label: "Structure & Columns", img: "/completed_project_2.png" },
+      { label: "Brickwork & Plaster", img: "/completed_project_3.png" },
+      { label: "Electrical & Plumbing", img: "/completed_project_4.png" },
+      { label: "Tiling & Finishing", img: "/completed_project_1.png" },
+      { label: "Final Handover", img: "/completed_project_2.png" }
+    ]
+  },
+  {
+    id: 2,
+    name: "Guru Raghavendra's Dream Home",
+    package: "Essential",
+    location: "Kengeri, Bengaluru",
+    area: "2,400 sqft",
+    floors: "G+1.5",
+    price: "₹45 Lakhs",
+    duration: "9 Months",
+    coverImg: "/completed_project_2.png",
+    phases: [
+      { label: "Foundation & Slab", img: "/completed_project_2.png" },
+      { label: "Structure & Columns", img: "/completed_project_3.png" },
+      { label: "Brickwork & Plaster", img: "/completed_project_4.png" },
+      { label: "Electrical & Plumbing", img: "/completed_project_1.png" },
+      { label: "Tiling & Finishing", img: "/completed_project_2.png" },
+      { label: "Final Handover", img: "/completed_project_3.png" }
+    ]
+  },
+  {
+    id: 3,
+    name: "Kalakar's Dream Home",
+    package: "Premium",
+    location: "Whitefield, Bengaluru",
+    area: "3,100 sqft",
+    floors: "G+2",
+    price: "₹62 Lakhs",
+    duration: "11 Months",
+    coverImg: "/completed_project_3.png",
+    phases: [
+      { label: "Foundation & Slab", img: "/completed_project_3.png" },
+      { label: "Structure & Columns", img: "/completed_project_4.png" },
+      { label: "Brickwork & Plaster", img: "/completed_project_1.png" },
+      { label: "Electrical & Plumbing", img: "/completed_project_2.png" },
+      { label: "Tiling & Finishing", img: "/completed_project_3.png" },
+      { label: "Final Handover", img: "/completed_project_4.png" }
+    ]
+  },
+  {
+    id: 4,
+    name: "Aditya's Dream Home",
+    package: "Luxury",
+    location: "Jayanagar, Bengaluru",
+    area: "4,500 sqft",
+    floors: "G+3",
+    price: "₹1.1 Crores",
+    duration: "14 Months",
+    coverImg: "/completed_project_4.png",
+    phases: [
+      { label: "Foundation & Slab", img: "/completed_project_4.png" },
+      { label: "Structure & Columns", img: "/completed_project_1.png" },
+      { label: "Brickwork & Plaster", img: "/completed_project_2.png" },
+      { label: "Electrical & Plumbing", img: "/completed_project_3.png" },
+      { label: "Tiling & Finishing", img: "/completed_project_4.png" },
+      { label: "Final Handover", img: "/completed_project_1.png" }
+    ]
+  }
+];
+
 // Media Ticker Data
 const newsData = [
   {
@@ -187,9 +327,519 @@ const newsData = [
   }
 ];
 
+const standardSectionDetails = {
+  "Civil Construction": [
+    "High-grade standard concrete casting with strict slump testing.",
+    "First-class red clay brick/solid block masonry.",
+    "Internal and external plastering with rich cement mortar mix."
+  ],
+  "Architectural Design": [
+    "Bespoke spatial design planning by senior architects.",
+    "Detailed room layouts and furniture positioning drawings.",
+    "Cross-section and structural alignment reviews."
+  ],
+  "Interior Design": [
+    "2D furniture layout and space zoning plans.",
+    "Color scheme curation and material selection guides.",
+    "Basic styling suggestions and lighting placement guidelines."
+  ],
+  "Structural Designing": [
+    "Structural loading and load-distribution calculations.",
+    "RCC framing, column, and beam structural drawing sets.",
+    "Foundation engineering designs certified by structural consultants."
+  ],
+  "MEP Designing": [
+    "Electrical conduit piping and distribution board layouts.",
+    "Plumbing waterline routing and pressure reviews.",
+    "Sanitary drainage, rainwater harvesting, and septic tank layouts."
+  ],
+  "Government Liaison Assistance": [
+    "Building plan approval documentation and guidance.",
+    "Liaison assistance for temporary and permanent electrical connection.",
+    "Liaison assistance for water supply and sewage board approvals."
+  ],
+  "Flooring Wall tiling": [
+    "Premium vitrified tiles for living, dining, and bedroom floors.",
+    "Antiskid ceramic tiles for bathroom flooring.",
+    "Premium glazed ceramic tiles for bathroom wall dadoing up to 7 feet."
+  ],
+  "Painting": [
+    "Double coat premium wall putty and primer for interior walls.",
+    "Two coats of premium interior emulsion paint.",
+    "Weatherproof exterior emulsion paint for exterior walls."
+  ],
+  "Electrical": [
+    "Fire-resistant concealed copper wires of reputed brands.",
+    "Modular switches and sockets with metallic board backing.",
+    "Inverter wiring provision and split AC points in bedrooms."
+  ],
+  "Plumbing": [
+    "CPVC pipes for hot and cold internal waterline setups.",
+    "PVC pipelines for internal and external soil and waste lines.",
+    "Reputed brand sanitary fittings and overhead water tank setup."
+  ],
+  "Fixtures": [
+    "Teal/Chrome branded brass plumbing fixtures.",
+    "Wall-mounted or floor-mounted ceramic toilet closets.",
+    "Premium design washbasins in dining and bathrooms."
+  ],
+  "Doors": [
+    "Teakwood main door frame and premium shutter design.",
+    "Hardwood frames with skin shutters for internal doors.",
+    "Waterproof PVC doors for restrooms."
+  ],
+  "Windows": [
+    "Concealed slide UPVC or high-end aluminium window systems.",
+    "Safety grills manufactured with mild steel rods.",
+    "Toughened float glass panels for window frame shuttering."
+  ],
+  "Fabrication": [
+    "Mild steel railings for staircase and balcony safety.",
+    "Main gate fabrication matching the compound wall design.",
+    "Safety grills for utility areas."
+  ],
+  "Compound Wall": [
+    "Brick compound wall up to 5 feet height from ground level.",
+    "Plastering with cement mortar on both sides.",
+    "Weatherproof painting matching the main elevation."
+  ],
+  "Elevation": [
+    "Premium aesthetic elevation design with plastering grooves.",
+    "Glass balcony railings or CNC metal designs where specified.",
+    "Highlight elevation wall painting."
+  ],
+  "Exclusions & Incidentals": [
+    "Temporary power connection deposits and consumption charges paid by client.",
+    "Road cutting approvals, municipal water connection deposits.",
+    "Site cleanup, borewell setup, and excavation rock removal."
+  ],
+  "Payment Structure": [
+    "Milestone-based stage-wise payment structure (Booking, Foundation, Slabs, Plastering, Handover)."
+  ],
+  "Warranty and Guarantee": [
+    "10-Year structural concrete framework warranty.",
+    "1-Year general plumbing, electrical, and waterproofing warranty."
+  ],
+  "Sustainable Consultation": [
+    "Eco-friendly bricks/blocks review and green rating optimization.",
+    "Solar panel wiring and rainwater harvesting consulting.",
+    "Natural light and ventilation maximization review."
+  ]
+};
+
+const detailedPackagesData = [
+  {
+    name: "Essential",
+    price: "Rs.1680/*- Sq Ft",
+    icon: "fa-solid fa-wheat-awn",
+    color: "#06b6d4",
+    sections: {
+      "Design and Drawings": [
+        "2D – Floor Plans",
+        "3D Elevation Designs",
+        "Design Development – A maximum of 3 drawing revisions"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "Premium",
+    price: "Rs.1899/*- Sq Ft",
+    icon: "fa-solid fa-award",
+    color: "#3b82f6",
+    sections: {
+      "Design and Drawings": [
+        "2D – Floor Plans",
+        "3D Elevation Designs",
+        "Design Development – A maximum of 3 of drawing revisions per drawing",
+        "Basic Internal Isometric Views of the floor plan",
+        "Visual site survey & drawing on the basis of measurement provided by client"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "Premium +",
+    price: "Rs.2099/*- Sq Ft",
+    icon: "fa-solid fa-gem",
+    color: "#1d4ed8",
+    sections: {
+      "Design and Drawings": [
+        "2D – Floor Plans",
+        "3D Elevation Designs",
+        "Design Development – A maximum of 3 drawing revisions",
+        "Internal Isometric views all rooms, open areas etc.",
+        "Visual site survey & drawing on the basis of measurement provided by client",
+        "Site survey by surveyor with instruments & drawing on the basis of survey",
+        "Basic VR of the 3D model"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "Luxury",
+    price: "Rs.2370/*- Sq Ft",
+    icon: "fa-solid fa-crown",
+    color: "#8b5cf6",
+    sections: {
+      "Design and Drawings": [
+        "Premium 2D & 3D – Floor Plans",
+        "Luxury 3D Elevation Designs of all views",
+        "Design Development – A maximum of 40 drawing revisions",
+        "Internal Isometric Views all rooms, open areas etc & detailed renders for each segment of the home for better understanding of the design",
+        "Detailed Landscaping design",
+        "3D Walkthrough of the home along with internal & external walkthrough",
+        "Hands on isometric 3D model of the home with separate floors",
+        "Site survey by surveyor with instruments & drawing on the basis of survey",
+        "VR for the 3D Walkthrough of the home along with internal & external walkthrough"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "Luxury +",
+    price: "Rs.2550/*- Sq Ft",
+    icon: "fa-solid fa-chess-king",
+    color: "#6d28d9",
+    sections: {
+      "Design and Drawings": [
+        "Premium 2D & 3D – Floor Plans",
+        "Luxury 3D Elevation Designs of all views",
+        "Design Development – A maximum of 40 drawing revisions",
+        "Internal Isometric Views all rooms, open areas etc & detailed renders for each segment of the home for better understanding of the design",
+        "Detailed Landscaping design",
+        "3D Walkthrough of the home along with internal & external walkthrough",
+        "Hands on isometric 3D model of the home with separate floors",
+        "Site survey by surveyor with instruments & drawing on the basis of survey",
+        "VR for the 3D Walkthrough of the home along with internal & external walkthrough including interior renders"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "Freedom",
+    price: "Rs.2220/*- Sq Ft",
+    icon: "fa-solid fa-dove",
+    color: "#f59e0b",
+    sections: {
+      "Design and Drawings": [
+        "2D – Floor Plans",
+        "3D Elevation Designs",
+        "Design Development – A maximum of 3 drawing revisions per drawing",
+        "Internal Isometric Views all rooms, open areas etc.",
+        "Visual site survey & drawing on the basis of measurement provided by client"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "Freedom +",
+    price: "Rs.2349/*- Sq Ft",
+    icon: "fa-solid fa-scale-balanced",
+    color: "#d97706",
+    sections: {
+      "Design and Drawings": [
+        "2D – Floor Plans",
+        "3D Elevation Designs",
+        "Design Development – A maximum of 3 drawing revisions",
+        "Internal Isometric Views all rooms, open areas etc.",
+        "Visual site survey & drawing on the basis of measurement provided by client",
+        "Site survey by surveyor with instruments & drawing on the basis of survey",
+        "Basic VR of the 3D model"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "The one +",
+    price: "Rs.3099/*- Sq Ft",
+    icon: "fa-solid fa-star",
+    color: "#ec4899",
+    sections: {
+      "Design and Drawings": [
+        "Premium 2D & 3D – Floor Plans",
+        "Luxury 3D Elevation Designs of all views",
+        "Technical & detailed Presentation of floor plans, multiple home visits from the design team to help finalize all designs",
+        "Sketching & interactive sessions of all aspects",
+        "Internal Isometric Views of rooms, open areas etc & detailed renders for better understanding of the design",
+        "Detailed Landscaping design",
+        "3D Walkthrough of the home along with internal & external walkthrough",
+        "Hands on isometric 3D model of the home with separate floors",
+        "Site survey by surveyor with instruments & drawing on the basis of survey",
+        "Curated VR models will include interior elements & furniture post designing (if interior executed by Company). Get 5 more changes for the VR model"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "Ecofriendly",
+    price: "Rs.1900/*- Sq Ft",
+    icon: "fa-solid fa-leaf",
+    color: "#10b981",
+    sections: {
+      "Design and Drawings": [
+        "2D – Floor Plans",
+        "3D Elevation Designs",
+        "Internal Isometric Views to understand eco friendly design better",
+        "Design Development – A maximum of 3 of drawing revisions per drawing",
+        "Visual site survey & drawing on the basis of measurement provided by client"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": [],
+      "Sustainable Consultation": []
+    }
+  },
+  {
+    name: "Ecofriendly +",
+    price: "Rs.2099/*- Sq Ft",
+    icon: "fa-solid fa-tree",
+    color: "#047857",
+    sections: {
+      "Design and Drawings": [
+        "2D – Floor Plans",
+        "3D Elevation Designs",
+        "Internal Isometric Views to understand eco friendly design better",
+        "Design Development – A maximum of 3 of drawing revisions per drawing",
+        "Visual site survey & drawing on the basis of measurement provided by client",
+        "Site survey by surveyor with instruments & drawing on the basis of survey"
+      ],
+      "Civil Construction": [],
+      "Architectural Design": [],
+      "Interior Design": [],
+      "Structural Designing": [],
+      "MEP Designing": [],
+      "Government Liaison Assistance": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Payment Structure": [],
+      "Warranty and Guarantee": [],
+      "Sustainable Consultation": []
+    }
+  },
+  {
+    name: "Shell and Core",
+    price: "Rs.1245/*- Sq Ft",
+    icon: "fa-solid fa-trowel-bricks",
+    color: "#64748b",
+    sections: {
+      "Design and Drawings": [
+        "2D Floor Plans & 3D Elevation Design",
+        "Internal isometric views – All rooms, open areas etc.",
+        "Architectural Design – All necessary Working Drawings, schedule of openings, section, elevation & Detailed portfolio of the home post handover",
+        "Design Development – A maximum of 3 of drawing revisions per drawing",
+        "Interior Design - 2D furniture layout, assistance in material procurement, 3D interior designs if executed by bAh",
+        "Structural Design – Structural Design & GFC Drawings, Soil test report, Design Analysis Report & Overlapped Structural, Architectural & MEP Drawings MEP Design - Electrical layout, Plumbing Waterline layout Plumbing Drainage layout.",
+        "buildAhome will provide liaison assistance with different government agencies (Plan approval, Electrical, Water & Sewage Connection)",
+        "Visual site survey & drawing on the basis of measurement provided by clients & site survey by surveyor with instruments & drawing on the basis of survey"
+      ],
+      "Civil Construction": [],
+      "MEP Designing": [],
+      "Electrical": [],
+      "Doors": [],
+      "Windows": [],
+      "Compound Wall": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": [],
+      "Warranty and Guarantee": []
+    }
+  },
+  {
+    name: "Pure",
+    price: "Rs.1199/*- Sq Ft",
+    icon: "fa-solid fa-droplet",
+    color: "#0ea5e9",
+    sections: {
+      "Design and Drawings": [
+        "One set of architectural floor plan, elevation, basic structural design and basic MEP layout with a few working drawings are provided as a value added service free of cost."
+      ],
+      "Civil Construction": [],
+      "Structural Designing": [],
+      "Flooring Wall tiling": [],
+      "Painting": [],
+      "Electrical": [],
+      "Plumbing": [],
+      "Fixtures": [],
+      "Doors": [],
+      "Windows": [],
+      "Fabrication": [],
+      "Elevation": [],
+      "Exclusions & Incidentals": []
+    }
+  }
+];
+
 export default function App() {
   // State variables for interactive widgets
-  const [activeStep, setActiveStep] = useState(1);
   const [activeTesti, setActiveTesti] = useState(1);
   const [activePack, setActivePack] = useState(1);
   const [openFaq, setOpenFaq] = useState(1);
@@ -198,6 +848,38 @@ export default function App() {
   const [lightboxImg, setLightboxImg] = useState(null);
   const [sliderOffset, setSliderOffset] = useState(0);
   const [newsIndex, setNewsIndex] = useState(0);
+  // Our Homes state
+  const [selectedHomeId, setSelectedHomeId] = useState(1);
+  const [phasesOffset, setPhasesOffset] = useState(0);
+  const [currentTab, setCurrentTab] = useState('home');
+  const [selectedPkgIndex, setSelectedPkgIndex] = useState(0);
+  const [expandedSecIndex, setExpandedSecIndex] = useState(0);
+  const [whyActiveTab, setWhyActiveTab] = useState(0);
+  const [hireFormData, setHireFormData] = useState({
+    name: '',
+    phone: '',
+    location: '',
+    constructionType: '',
+    plotSize: '',
+    floors: '',
+    budget: '',
+    requirements: '',
+    authCheck: true
+  });
+
+  const handleNavigation = (tabId, elementId) => {
+    setCurrentTab(tabId);
+    if (elementId) {
+      setTimeout(() => {
+        const el = document.getElementById(elementId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 150);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   // Form Lead State
   const [formData, setFormData] = useState({
@@ -215,6 +897,29 @@ export default function App() {
     phone: '',
     time: 'immediate'
   });
+
+  // Contact Us Form State
+  const [contactFormData, setContactFormData] = useState({
+    name: '',
+    phone: '',
+    location: '',
+    plotSize: '',
+    requirements: '',
+    authCheck: true
+  });
+
+  const handleContactFormSubmit = (e) => {
+    e.preventDefault();
+    alert(`Thank you ${contactFormData.name}! Your request has been received. Our construction experts will contact you shortly on +91 ${contactFormData.phone} for your project at ${contactFormData.location}.`);
+    setContactFormData({
+      name: '',
+      phone: '',
+      location: '',
+      plotSize: '',
+      requirements: '',
+      authCheck: true
+    });
+  };
 
   // Auto scroll news ticker
   useEffect(() => {
@@ -248,6 +953,22 @@ export default function App() {
     return () => clearInterval(timer);
   }, []);
 
+  // Auto scroll Phases carousel
+  useEffect(() => {
+    setPhasesOffset(0);
+  }, [selectedHomeId]);
+
+  useEffect(() => {
+    const selectedHome = ourHomesData.find(h => h.id === selectedHomeId);
+    if (!selectedHome) return;
+    const maxOffset = selectedHome.phases.length - 3;
+    if (maxOffset <= 0) return;
+    const timer = setInterval(() => {
+      setPhasesOffset(prev => (prev >= maxOffset ? 0 : prev + 1));
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [selectedHomeId]);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     alert(`Thank you ${formData.name}! Our construction experts will contact you shortly on +91 ${formData.phone} for your project at ${formData.location}.`);
@@ -256,6 +977,22 @@ export default function App() {
       phone: '',
       location: '',
       plotSize: '',
+      requirements: '',
+      authCheck: true
+    });
+  };
+
+  const handleHireFormSubmit = (e) => {
+    e.preventDefault();
+    alert(`Thank you ${hireFormData.name}! We have received your detailed request for a ${hireFormData.constructionType} construction on a ${hireFormData.plotSize} plot (${hireFormData.floors}) in ${hireFormData.location}. Budget: ${hireFormData.budget}. Our senior engineer will contact you shortly.`);
+    setHireFormData({
+      name: '',
+      phone: '',
+      location: '',
+      constructionType: '',
+      plotSize: '',
+      floors: '',
+      budget: '',
       requirements: '',
       authCheck: true
     });
@@ -300,16 +1037,17 @@ export default function App() {
       <header className="header">
         <div className="container">
           <div className="logo-area">
-            <a href="#">
+            <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('home'); }}>
               <img src="/logo.jpeg" alt="HS Construction & Builders" className="logo-img" />
             </a>
           </div>
           
           <ul className="nav-menu">
-            <li><a href="#about" className="nav-link">Our Homes</a></li>
-            <li><a href="#about" className="nav-link">Green Homes</a></li>
-            <li><a href="#how-it-works" className="nav-link">How It Works</a></li>
-            <li><a href="#packages" className="nav-link">Packages</a></li>
+            <li><a href="#our-homes" className={`nav-link ${currentTab === 'our-homes' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); handleNavigation('our-homes'); }}>Our Homes</a></li>
+            <li><a href="#about" className="nav-link" onClick={(e) => { e.preventDefault(); handleNavigation('home', 'about'); }}>Green Homes</a></li>
+            <li><a href="#how-it-works" className={`nav-link ${currentTab === 'how-it-works' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); handleNavigation('how-it-works'); }}>How It Works</a></li>
+            <li><a href="#packages" className={`nav-link ${currentTab === 'packages' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); handleNavigation('packages'); }}>Packages</a></li>
+            <li><a href="#contact" className={`nav-link ${currentTab === 'contact' ? 'active' : ''}`} onClick={(e) => { e.preventDefault(); handleNavigation('contact'); }}>Contact Us</a></li>
           </ul>
 
           <div className="header-actions">
@@ -325,16 +1063,18 @@ export default function App() {
         </div>
       </header>
 
-      {/* HERO BANNER - Full banner image */}
-      <section className="hero-banner-section">
-        <div className="hero-banner-img-wrap">
-          <img
-            src="/hero_banner.png"
-            alt="10 Years of HS Construction & Builders - Crafting Structures Creating Value"
-            className="hero-banner-img"
-          />
-        </div>
-      </section>
+      {currentTab === 'home' && (
+        <>
+          {/* HERO BANNER - Full banner image */}
+          <section className="hero-banner-section">
+            <div className="hero-banner-img-wrap">
+              <img
+                src="/hero_banner.png"
+                alt="10 Years of HS Construction & Builders - Crafting Structures Creating Value"
+                className="hero-banner-img"
+              />
+            </div>
+          </section>
 
       {/* TRUST LOGO / AWARDS BAR */}
       <section className="trust-bar">
@@ -397,27 +1137,19 @@ export default function App() {
         <div className="container">
 
           {/* Heading - matches buildahome font/style exactly */}
-          <div className="why-heading">
-            <p className="why-heading-why">Why</p>
-            <div className="why-heading-brand">
-              <svg className="why-hand-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 15c2 3.5 6 5.5 10 4.5a8 8 0 0 0 6.5-6.5" />
-                <path d="M12 14c1.5-1.5 2.5-3 2-4.5s-2-1.5-3 .5c-.5.8-1 2-1 2" />
-                <path d="M5 13.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-                <path d="M7 11.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-                <path d="M9 9.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
+          <div className="section-header why-header">
+            <div className="section-tag why-tag">
+              <svg className="tag-bracket tag-bracket-left" width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 4C6 8 4 12 4 12C4 12 6 16 12 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M14 6C9 9 7 12 7 12C7 12 9 15 14 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
               </svg>
-              <span className="why-brand-name">HS Construction</span>
-              <svg className="why-hand-svg why-hands-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 15c2 3.5 6 5.5 10 4.5a8 8 0 0 0 6.5-6.5" />
-                <path d="M12 14c1.5-1.5 2.5-3 2-4.5s-2-1.5-3 .5c-.5.8-1 2-1 2" />
-                <path d="M5 13.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-                <path d="M7 11.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-                <path d="M9 9.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
+              <span className="tag-text">Why Us</span>
+              <svg className="tag-bracket tag-bracket-right" width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4C10 8 12 12 12 12C12 12 10 16 4 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M2 6C7 9 9 12 9 12C9 12 7 15 2 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
               </svg>
             </div>
-            <h2 className="why-heading-main">Is Best for Turnkey Home Constructions?</h2>
-            <div className="why-heading-divider"></div>
+            <h2 className="section-title why-title">Why HS Construction Is Best for Turnkey Home Constructions?</h2>
           </div>
 
           {/* Three SEPARATE boxes */}
@@ -560,27 +1292,19 @@ export default function App() {
       {/* ABOUT US - Reference matching slider */}
       <section className="about-new" id="about">
         {/* Fixed heading - same for all slides */}
-        <div className="about-heading-wrap">
-          <p className="about-heading-sub">About</p>
-          <div className="about-heading-brand">
-            <svg className="about-hand-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M3 15c2 3.5 6 5.5 10 4.5a8 8 0 0 0 6.5-6.5" />
-              <path d="M12 14c1.5-1.5 2.5-3 2-4.5s-2-1.5-3 .5c-.5.8-1 2-1 2" />
-              <path d="M5 13.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-              <path d="M7 11.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-              <path d="M9 9.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
+        <div className="section-header about-header">
+          <div className="section-tag about-tag">
+            <svg className="tag-bracket tag-bracket-left" width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 4C6 8 4 12 4 12C4 12 6 16 12 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M14 6C9 9 7 12 7 12C7 12 9 15 14 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
             </svg>
-            <span className="about-brand-name">HS Construction</span>
-            <svg className="about-hand-svg about-hands-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M3 15c2 3.5 6 5.5 10 4.5a8 8 0 0 0 6.5-6.5" />
-              <path d="M12 14c1.5-1.5 2.5-3 2-4.5s-2-1.5-3 .5c-.5.8-1 2-1 2" />
-              <path d="M5 13.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-              <path d="M7 11.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-              <path d="M9 9.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
+            <span className="tag-text">About Us</span>
+            <svg className="tag-bracket tag-bracket-right" width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 4C10 8 12 12 12 12C12 12 10 16 4 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              <path d="M2 6C7 9 9 12 9 12C9 12 7 15 2 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
             </svg>
           </div>
-          <h2 className="about-main-title">One-Stop Solution for Your Dream Home Construction</h2>
-          <div className="about-title-divider"></div>
+          <h2 className="section-title about-title">One-Stop Solution for Your Dream Home Construction</h2>
         </div>
 
         {/* Slider area */}
@@ -648,143 +1372,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* HOW IT WORKS (ROADMAP) */}
-      <section className="steps-section" id="how-it-works">
-        <div className="container">
-          {/* Heading - matches buildahome style exactly */}
-          <div className="steps-heading">
-            <div className="steps-heading-brand">
-              <svg className="steps-hand-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 15c2 3.5 6 5.5 10 4.5a8 8 0 0 0 6.5-6.5" />
-                <path d="M12 14c1.5-1.5 2.5-3 2-4.5s-2-1.5-3 .5c-.5.8-1 2-1 2" />
-                <path d="M5 13.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-                <path d="M7 11.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-                <path d="M9 9.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-              </svg>
-              <span className="steps-brand-name">Working Steps</span>
-              <svg className="steps-hand-svg steps-hands-flip" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M3 15c2 3.5 6 5.5 10 4.5a8 8 0 0 0 6.5-6.5" />
-                <path d="M12 14c1.5-1.5 2.5-3 2-4.5s-2-1.5-3 .5c-.5.8-1 2-1 2" />
-                <path d="M5 13.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-                <path d="M7 11.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-                <path d="M9 9.5c1.5-2.5 3.5-4 5-3s1 2.5 0 4" />
-              </svg>
-            </div>
-            <h2 className="steps-heading-main">Your Roadmap to Building the Home of Your Dreams</h2>
-            <div className="steps-heading-divider"></div>
-          </div>
-
-          <div className="steps-tabs">
-            {[1,2,3,4,5,6].map((num) => {
-              const labels = [
-                "Lets Get Started",
-                "Design Specification",
-                "Client Agreement",
-                "Construction & Updates",
-                "Site Visits",
-                "Completion & Handover"
-              ];
-              
-              // Custom vector SVG assets matching buildahome.in icons exactly
-              const stepIcons = {
-                1: (
-                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{width: 32, height: 32}}>
-                    <ellipse cx="32" cy="38" rx="20" ry="8" />
-                    <circle cx="32" cy="18" r="5" />
-                    <path d="M24 28c0-3 3-5 8-5s8 2 8 5" />
-                    <circle cx="16" cy="24" r="4.5" />
-                    <path d="M10 32c0-2.5 2-4 6-4s6 1.5 6 4" />
-                    <circle cx="48" cy="24" r="4.5" />
-                    <path d="M42 32c0-2.5 2-4 6-4s6 1.5 6 4" />
-                  </svg>
-                ),
-                2: (
-                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{width: 32, height: 32}}>
-                    <rect x="8" y="12" width="48" height="36" rx="3" />
-                    <line x1="16" y1="20" x2="48" y2="20" />
-                    <line x1="16" y1="28" x2="36" y2="28" />
-                    <polygon points="16,42 40,42 16,18" />
-                    <line x1="44" y1="28" x2="44" y2="40" />
-                    <polygon points="44,40 42,44 46,44" />
-                  </svg>
-                ),
-                3: (
-                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{width: 32, height: 32}}>
-                    <rect x="14" y="10" width="36" height="44" rx="4" />
-                    <path d="M26 10h12v4H26z" />
-                    <rect x="20" y="20" width="6" height="6" rx="1" />
-                    <line x1="30" y1="23" x2="44" y2="23" />
-                    <rect x="20" y="32" width="6" height="6" rx="1" />
-                    <line x1="30" y1="35" x2="44" y2="35" />
-                    <line x1="20" y1="44" x2="36" y2="44" />
-                    <path d="M38 42l4-4 2 2-4 4z" />
-                  </svg>
-                ),
-                4: (
-                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{width: 32, height: 32}}>
-                    <line x1="6" y1="48" x2="58" y2="48" />
-                    <polygon points="12,48 12,28 32,14 52,28 52,48" />
-                    <line x1="12" y1="38" x2="52" y2="38" />
-                    <line x1="22" y1="38" x2="22" y2="48" />
-                    <line x1="42" y1="38" x2="42" y2="48" />
-                    <path d="M40 8h16v12h-4" />
-                    <line x1="46" y1="8" x2="46" y2="16" />
-                  </svg>
-                ),
-                5: (
-                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{width: 32, height: 32}}>
-                    <path d="M16 48a16 16 0 0 1 32 0" />
-                    <circle cx="32" cy="28" r="9" />
-                    <path d="M20 23a12 12 0 0 1 24 0H20z" />
-                    <path d="M16 23h32" />
-                    <path d="M32 11v6" />
-                  </svg>
-                ),
-                6: (
-                  <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" style={{width: 32, height: 32}}>
-                    <circle cx="24" cy="20" r="8" />
-                    <path d="M28 26l12 12h4v-4l-2-2v-2l-2-2" />
-                    <circle cx="44" cy="38" r="1.5" />
-                    <path d="M20 28l4 18h4l-1-4h3l-1-4" />
-                  </svg>
-                )
-              };
-
-              return (
-                <button 
-                  key={num} 
-                  className={`step-tab-btn ${activeStep === num ? 'active' : ''}`}
-                  onClick={() => setActiveStep(num)}
-                >
-                  <span className="step-tab-num">0{num}</span>
-                  <div className="step-circle">
-                    {stepIcons[num]}
-                  </div>
-                  <span className="step-tab-label">{labels[num-1]}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="step-content-display">
-            <div className="step-visual">
-              <img src={stepsData[activeStep].img} alt={stepsData[activeStep].title} />
-            </div>
-            <div className="step-text-details">
-              <h3>{stepsData[activeStep].title}</h3>
-              <p>{stepsData[activeStep].desc}</p>
-              <ul className="step-bullet-list">
-                {stepsData[activeStep].bullets.map((bullet, idx) => (
-                  <li key={idx} className="step-bullet-item">
-                    <i className="fa-solid fa-circle-check"></i> {bullet}
-                  </li>
-                ))}
-              </ul>
-              <button className="step-cta-btn" onClick={() => setIsModalOpen(true)}>Enquire Now</button>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* HOW IT WORKS Timeline section has been moved to its own page view conditional rendering */}
 
       {/* TESTIMONIALS */}
       <section className="testimonials-section" id="testimonials">
@@ -907,7 +1495,6 @@ export default function App() {
               </svg>
             </div>
             <h2 className="section-title projects-title">Our Completed Works</h2>
-            <div className="projects-title-underline"></div>
           </div>
 
           <div className="portfolio-slider-wrapper-overlay">
@@ -960,7 +1547,6 @@ export default function App() {
               </svg>
             </div>
             <h2 className="section-title packages-title">Explore Our Popular Packages Now</h2>
-            <div className="packages-title-underline"></div>
           </div>
 
           <div className="packages-split-layout">
@@ -1208,7 +1794,6 @@ export default function App() {
               </svg>
             </div>
             <h2 className="section-title brands-title">Most Trusted & Loyal Partners</h2>
-            <div className="brands-title-underline"></div>
           </div>
 
           <div className="brands-marquee-container">
@@ -1295,7 +1880,6 @@ export default function App() {
               </svg>
             </div>
             <h2 className="section-title faq-title">Related to Costing</h2>
-            <div className="faq-title-underline"></div>
           </div>
 
           <div className="faq-grid-redesign">
@@ -1346,7 +1930,831 @@ export default function App() {
             </div>
           </div>
         </div>
-      </section>
+            </section>
+          </>
+        )}
+
+      {currentTab === 'our-homes' && (
+        <>
+          {/* OUR HOMES SECTION */}
+          {(() => {
+            const selectedHome = ourHomesData.find(h => h.id === selectedHomeId);
+            const maxPhasesOffset = selectedHome ? Math.max(0, selectedHome.phases.length - 3) : 0;
+            const pkgColor = { Premium: '#40b2b2', Essential: '#f59e0b', Luxury: '#8b5cf6' };
+            return (
+              <section className="our-homes-section" id="our-homes">
+                <div className="container">
+                  {/* Heading */}
+                  <div className="section-header our-homes-header">
+                    <div className="section-tag">
+                      <svg className="tag-bracket tag-bracket-left" width="16" height="24" viewBox="0 0 16 24" fill="none">
+                        <path d="M12 4C6 8 4 12 4 12C4 12 6 16 12 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M14 6C9 9 7 12 7 12C7 12 9 15 14 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
+                      </svg>
+                      <span className="tag-text">Our Homes</span>
+                      <svg className="tag-bracket tag-bracket-right" width="16" height="24" viewBox="0 0 16 24" fill="none">
+                        <path d="M4 4C10 8 12 12 12 12C12 12 10 16 4 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <path d="M2 6C7 9 9 12 9 12C9 12 7 15 2 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
+                      </svg>
+                    </div>
+                    <h2 className="section-title">Delivering the Highest Quality in Turnkey Home Construction Services</h2>
+                  </div>
+
+                  {/* 4 Project Cards Grid */}
+                  <div className="oh-cards-grid">
+                    {ourHomesData.map(home => (
+                      <div
+                        key={home.id}
+                        className={`oh-card${selectedHomeId === home.id ? ' oh-card-active' : ''}`}
+                        onClick={() => setSelectedHomeId(home.id)}
+                      >
+                        {/* Cover Image */}
+                        <div className="oh-card-img-wrap">
+                          <img src={home.coverImg} alt={home.name} className="oh-card-img" />
+                          {/* Package badge */}
+                          <span className="oh-pkg-badge" style={{ background: pkgColor[home.package] || '#40b2b2' }}>
+                            {home.package}
+                          </span>
+                          {/* Hover info overlay */}
+                          <div className="oh-hover-overlay">
+                            <div className="oh-hover-row">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="oh-hover-icon"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                              <span>{home.location}</span>
+                            </div>
+                            <div className="oh-hover-row">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="oh-hover-icon"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                              <span>{home.area}</span>
+                            </div>
+                            <div className="oh-hover-row">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="oh-hover-icon"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+                              <span>{home.floors}</span>
+                            </div>
+                            <div className="oh-hover-row">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="oh-hover-icon"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                              <span>{home.price}</span>
+                            </div>
+                          </div>
+                        </div>
+                        {/* Title */}
+                        <div className="oh-card-title">{home.name}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Selected Home Details Panel */}
+                  {selectedHome && (
+                    <div className="oh-detail-panel">
+                      {/* 6 Spec Items */}
+                      <div className="oh-spec-grid">
+                        {/* Location */}
+                        <div className="oh-spec-item">
+                          <div className="oh-spec-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                          </div>
+                          <div>
+                            <div className="oh-spec-label">Location</div>
+                            <div className="oh-spec-value">{selectedHome.location}</div>
+                          </div>
+                        </div>
+                        {/* Total Area */}
+                        <div className="oh-spec-item">
+                          <div className="oh-spec-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                          </div>
+                          <div>
+                            <div className="oh-spec-label">Total Area</div>
+                            <div className="oh-spec-value">{selectedHome.area}</div>
+                          </div>
+                        </div>
+                        {/* Floors */}
+                        <div className="oh-spec-item">
+                          <div className="oh-spec-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="15" width="20" height="4" rx="1"/><rect x="2" y="9" width="20" height="4" rx="1"/><rect x="2" y="3" width="20" height="4" rx="1"/></svg>
+                          </div>
+                          <div>
+                            <div className="oh-spec-label">Floors</div>
+                            <div className="oh-spec-value">{selectedHome.floors}</div>
+                          </div>
+                        </div>
+                        {/* Price */}
+                        <div className="oh-spec-item">
+                          <div className="oh-spec-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                          </div>
+                          <div>
+                            <div className="oh-spec-label">Price</div>
+                            <div className="oh-spec-value">{selectedHome.price}</div>
+                          </div>
+                        </div>
+                        {/* Package */}
+                        <div className="oh-spec-item">
+                          <div className="oh-spec-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                          </div>
+                          <div>
+                            <div className="oh-spec-label">Package</div>
+                            <div className="oh-spec-value">{selectedHome.package}</div>
+                          </div>
+                        </div>
+                        {/* Duration */}
+                        <div className="oh-spec-item">
+                          <div className="oh-spec-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                          </div>
+                          <div>
+                            <div className="oh-spec-label">Duration</div>
+                            <div className="oh-spec-value">{selectedHome.duration}</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Development Phases Carousel */}
+                      <div className="oh-phases-wrap">
+                        <div className="section-header" style={{ marginBottom: '28px' }}>
+                          <div className="section-tag">
+                            <svg className="tag-bracket tag-bracket-left" width="16" height="24" viewBox="0 0 16 24" fill="none">
+                              <path d="M12 4C6 8 4 12 4 12C4 12 6 16 12 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                              <path d="M14 6C9 9 7 12 7 12C7 12 9 15 14 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
+                            </svg>
+                            <span className="tag-text">Development Phases</span>
+                            <svg className="tag-bracket tag-bracket-right" width="16" height="24" viewBox="0 0 16 24" fill="none">
+                              <path d="M4 4C10 8 12 12 12 12C12 12 10 16 4 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                              <path d="M2 6C7 9 9 12 9 12C9 12 7 15 2 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
+                            </svg>
+                          </div>
+                          <h3 className="oh-phases-title">See the Different Phases of Development</h3>
+                        </div>
+
+                        <div className="oh-phases-carousel-wrap">
+                          {/* Prev arrow */}
+                          <button
+                            className="oh-phases-arrow oh-phases-arrow-left"
+                            type="button"
+                            onClick={() => setPhasesOffset(p => Math.max(0, p - 1))}
+                            disabled={phasesOffset === 0}
+                          >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><polyline points="15 18 9 12 15 6"/></svg>
+                          </button>
+
+                          {/* Slides */}
+                          <div className="oh-phases-overflow">
+                            <div
+                              className="oh-phases-track"
+                              style={{ transform: `translateX(calc(-${phasesOffset} * (33.333% + 12px)))` }}
+                            >
+                              {selectedHome.phases.map((phase, idx) => (
+                                <div
+                                  key={idx}
+                                  className="oh-phase-card"
+                                  onClick={() => setLightboxImg(phase.img)}
+                                >
+                                  <div className="oh-phase-img-wrap">
+                                    <img src={phase.img} alt={phase.label} className="oh-phase-img" />
+                                    <div className="oh-phase-zoom">
+                                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="22" height="22"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                                    </div>
+                                  </div>
+                                  <div className="oh-phase-label">{phase.label}</div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Next arrow */}
+                          <button
+                            className="oh-phases-arrow oh-phases-arrow-right"
+                            type="button"
+                            onClick={() => setPhasesOffset(p => Math.min(maxPhasesOffset, p + 1))}
+                            disabled={phasesOffset >= maxPhasesOffset}
+                          >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" width="18" height="18"><polyline points="9 18 15 12 9 6"/></svg>
+                          </button>
+                        </div>
+
+                        {/* Dots */}
+                        <div className="oh-phases-dots">
+                          {Array.from({ length: maxPhasesOffset + 1 }).map((_, i) => (
+                            <button
+                              key={i}
+                              type="button"
+                              className={`oh-phases-dot${phasesOffset === i ? ' active' : ''}`}
+                              onClick={() => setPhasesOffset(i)}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </section>
+            );
+          })()}
+        </>
+      )}
+
+      {currentTab === 'how-it-works' && (
+        <>
+          <section className="steps-section" id="how-it-works" style={{ paddingTop: '140px', paddingBottom: '90px' }}>
+          <div className="container">
+            {/* Heading - matches buildahome style exactly */}
+            <div className="section-header steps-header">
+              <div className="section-tag steps-tag">
+                <svg className="tag-bracket tag-bracket-left" width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 4C6 8 4 12 4 12C4 12 6 16 12 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M14 6C9 9 7 12 7 12C7 12 9 15 14 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
+                </svg>
+                <span className="tag-text">How It Works</span>
+                <svg className="tag-bracket tag-bracket-right" width="16" height="24" viewBox="0 0 16 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 4C10 8 12 12 12 12C12 12 10 16 4 20" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                  <path d="M2 6C7 9 9 12 9 12C9 12 7 15 2 18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeOpacity="0.5"/>
+                </svg>
+              </div>
+              <h2 className="section-title steps-title">Your Roadmap to Building the Home of Your Dreams</h2>
+            </div>
+
+            <div className="timeline-container">
+              {howItWorksData.map((step, index) => (
+                <div key={index} className="timeline-item">
+                  
+                  {/* Node column */}
+                  <div className="timeline-node">
+                    <span className="timeline-number">{step.num}</span>
+                    <div className="timeline-circle">
+                      <i className={step.iconClass}></i>
+                    </div>
+                  </div>
+
+                  {/* Content card */}
+                  <div className="timeline-content">
+                    <h3 className="timeline-step-title">{step.title}</h3>
+                    <div className="timeline-columns">
+                      {/* Image Column */}
+                      <div className="timeline-image-col">
+                        <img src={step.img} alt={step.title} />
+                      </div>
+
+                      {/* Text Column */}
+                      <div className="timeline-text-col">
+                        <h4 className="timeline-subheading">{step.subTitle}</h4>
+                        <ul className="timeline-bullets">
+                          {step.bullets.map((bullet, bulletIdx) => (
+                            <li key={bulletIdx} className="timeline-bullet-item">
+                              <i className="fa-solid fa-circle-check timeline-bullet-icon"></i>
+                              <span>{bullet}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="timeline-desc">{step.desc}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* HIRE THE BEST CONSTRUCTION SERVICE */}
+        <section className="hire-section">
+          <div className="container">
+            <h2 className="hire-main-title">Hire the Best Construction Service</h2>
+            <div className="hire-layout">
+              {/* Left Box: Info panel with blue overlay */}
+              <div className="hire-info-card" style={{ backgroundImage: 'url(/hero_house_bg.png)' }}>
+                <div className="hire-info-overlay">
+                  <ul className="hire-info-list">
+                    <li>
+                      <span className="hire-info-icon"><i className="fa-solid fa-clock"></i></span>
+                      <span className="hire-info-text">Timely Delivery</span>
+                    </li>
+                    <li>
+                      <span className="hire-info-icon"><i className="fa-solid fa-shield-halved"></i></span>
+                      <span className="hire-info-text">Construction Guarantee</span>
+                    </li>
+                    <li>
+                      <span className="hire-info-icon"><i className="fa-solid fa-wallet"></i></span>
+                      <span className="hire-info-text">No Hidden Charges</span>
+                    </li>
+                    <li>
+                      <span className="hire-info-icon"><i className="fa-solid fa-users"></i></span>
+                      <span className="hire-info-text">No Subcontracting</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Right Box: Form panel */}
+              <div className="hire-form-card">
+                <form onSubmit={handleHireFormSubmit}>
+                  <div className="hire-form-group">
+                    <label>Name*</label>
+                    <input
+                      type="text"
+                      className="hire-form-control"
+                      placeholder="Enter your name"
+                      value={hireFormData.name}
+                      onChange={(e) => setHireFormData({ ...hireFormData, name: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div className="hire-form-group">
+                    <label>Phone No*</label>
+                    <div className="hire-phone-wrapper">
+                      <div className="hire-phone-prefix">
+                        <div className="flag-icon-india"></div>
+                        <span>+91</span>
+                      </div>
+                      <input
+                        type="tel"
+                        className="hire-form-control hire-phone-input"
+                        placeholder="81234 56789"
+                        pattern="[0-9]{10}"
+                        value={hireFormData.phone}
+                        onChange={(e) => setHireFormData({ ...hireFormData, phone: e.target.value })}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="hire-form-group">
+                    <label>Location*</label>
+                    <select
+                      className="hire-form-control"
+                      value={hireFormData.location}
+                      onChange={(e) => setHireFormData({ ...hireFormData, location: e.target.value })}
+                      required
+                    >
+                      <option value="">--Select Location--</option>
+                      <option value="Jayanagar">Jayanagar, Bengaluru</option>
+                      <option value="Whitefield">Whitefield, Bengaluru</option>
+                      <option value="Indiranagar">Indiranagar, Bengaluru</option>
+                      <option value="Kengeri">Kengeri, Bengaluru</option>
+                      <option value="Malleshwaram">Malleshwaram, Bengaluru</option>
+                      <option value="Mysuru">Mysuru, Karnataka</option>
+                      <option value="Other">Other Parts of Karnataka</option>
+                    </select>
+                  </div>
+
+                  <div className="hire-form-group">
+                    <label>Construction Type*</label>
+                    <select
+                      className="hire-form-control"
+                      value={hireFormData.constructionType}
+                      onChange={(e) => setHireFormData({ ...hireFormData, constructionType: e.target.value })}
+                      required
+                    >
+                      <option value="">--Select Construction Type--</option>
+                      <option value="Duplex House">Duplex House</option>
+                      <option value="Simplex House">Simplex House</option>
+                      <option value="Villa / Mansion">Luxury Villa</option>
+                      <option value="Apartment Building">Apartment Building</option>
+                      <option value="Commercial Complex">Commercial Space</option>
+                    </select>
+                  </div>
+
+                  <div className="hire-form-group">
+                    <label>Plot Size*</label>
+                    <select
+                      className="hire-form-control"
+                      value={hireFormData.plotSize}
+                      onChange={(e) => setHireFormData({ ...hireFormData, plotSize: e.target.value })}
+                      required
+                    >
+                      <option value="">--Select Plot Size--</option>
+                      <option value="30x30 Ft (900 Sq. Ft.)">30x30 Ft (900 Sq. Ft.)</option>
+                      <option value="30x40 Ft (1200 Sq. Ft.)">30x40 Ft (1200 Sq. Ft.)</option>
+                      <option value="40x40 Ft (1600 Sq. Ft.)">40x40 Ft (1600 Sq. Ft.)</option>
+                      <option value="40x60 Ft (2400 Sq. Ft.)">40x60 Ft (2400 Sq. Ft.)</option>
+                      <option value="50x80 Ft (4000 Sq. Ft.)">50x80 Ft (4000 Sq. Ft.)</option>
+                      <option value="Custom Plot Size">Other Plot Size</option>
+                    </select>
+                  </div>
+
+                  <div className="hire-form-group">
+                    <label>Number of Floors*</label>
+                    <select
+                      className="hire-form-control"
+                      value={hireFormData.floors}
+                      onChange={(e) => setHireFormData({ ...hireFormData, floors: e.target.value })}
+                      required
+                    >
+                      <option value="">--Select Number of Floors--</option>
+                      <option value="Ground Floor Only">Ground Floor Only</option>
+                      <option value="G + 1 Floor">G + 1 Floor</option>
+                      <option value="G + 2 Floors">G + 2 Floors</option>
+                      <option value="G + 3 Floors">G + 3 Floors</option>
+                      <option value="G + 4 Floors">G + 4 Floors</option>
+                    </select>
+                  </div>
+
+                  <div className="hire-form-group">
+                    <label>Approximate Budget*</label>
+                    <select
+                      className="hire-form-control"
+                      value={hireFormData.budget}
+                      onChange={(e) => setHireFormData({ ...hireFormData, budget: e.target.value })}
+                      required
+                    >
+                      <option value="">--Select Approximate Budget--</option>
+                      <option value="Under ₹40 Lakhs">Under ₹40 Lakhs</option>
+                      <option value="₹40 Lakhs - ₹60 Lakhs">₹40 Lakhs - ₹60 Lakhs</option>
+                      <option value="₹60 Lakhs - ₹90 Lakhs">₹60 Lakhs - ₹90 Lakhs</option>
+                      <option value="₹90 Lakhs - ₹1.5 Crores">₹90 Lakhs - ₹1.5 Crores</option>
+                      <option value="Above ₹1.5 Crores">Above ₹1.5 Crores</option>
+                    </select>
+                  </div>
+
+                  <div className="hire-form-group hire-full-width">
+                    <label>Construction Requirements*</label>
+                    <textarea
+                      className="hire-form-control"
+                      placeholder="Enter key details (e.g. 4BHK duplex with Vaastu, modular kitchen, parking for 2 cars)"
+                      rows="2"
+                      value={hireFormData.requirements}
+                      onChange={(e) => setHireFormData({ ...hireFormData, requirements: e.target.value })}
+                      required
+                    ></textarea>
+                  </div>
+
+                  <div className="hire-checkbox-group hire-full-width">
+                    <input
+                      type="checkbox"
+                      id="hireAuthCheck"
+                      checked={hireFormData.authCheck}
+                      onChange={(e) => setHireFormData({ ...hireFormData, authCheck: e.target.checked })}
+                      required
+                    />
+                    <label htmlFor="hireAuthCheck">
+                      I authorize HS Construction & its representatives to contact me with updates and notifications via Email/SMS/WhatsApp/Call. This will override DND/NDNC settings.
+                    </label>
+                  </div>
+
+                  <button type="submit" className="hire-submit-btn hire-full-width">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* WHY CHOOSE HS CONSTRUCTION ACCORDION */}
+        <section className="why-choose-section">
+          <div className="container">
+            
+            {/* Section Header */}
+            <div className="why-choose-header">
+              <span className="why-choose-house-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="30" height="30">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </span>
+              <h2 className="why-choose-title">Why Choose HS Construction?</h2>
+            </div>
+
+            <div className="why-choose-layout">
+              {/* Left side: Beautiful image with a border offset */}
+              <div className="why-choose-image-col">
+                <div className="why-choose-image-offset">
+                  <img src="/completed_project_2.png" alt="Modern classic turnkey villa" />
+                </div>
+              </div>
+
+              {/* Right side: Accordion */}
+              <div className="why-choose-accordion">
+                {[
+                  {
+                    title: "Why Families Choose HS Construction for Quality and Dependability",
+                    content: "At HS Construction, we emphatically declare without an iota of doubt that we have successfully delivered over 750 homes across 18 cities, making a strong presence in Bengaluru, Kengeri, Mysuru, and Jayanagar. This has been possible due to our commitment to excellence which has allowed us to maintain a remarkable 96% handover rate, ensuring that our client's dreams are turned into reality on time and every time. From start to finish, our unwavering dedication to timely delivery sets us apart, nurturing peace of mind to customers who look for typical exuberance and dependability."
+                  },
+                  {
+                    title: "Industry-Leading 10-Year Waterproofing Guarantee",
+                    content: "We use high-fidelity, advanced polymer-modified sealing systems across structural joints, wet rooms, and terrace decks. Backed by a legally binding structural contract, our 10-year complete leak-free waterproofing warranty protects your property value and safeguards your home interior against dampness and structural corrosion."
+                  },
+                  {
+                    title: "Construction Guarantee - An Icon of Mutual Trust",
+                    content: "To build a foundation of absolute trust, we execute construction stages with strict adherence to ISO 9001 and structural codes. We provide comprehensive warranties for structural concrete columns, MEP plumbing layouts, and external window frame seals. We lock in fixed pricing with no escalations, ensuring absolute financial predictability."
+                  },
+                  {
+                    title: "No Subcontracting - Direct Accountability",
+                    content: "Unlike traditional agencies that outsource masonry and finishes to unverified third-party builders, HS Construction maintains direct control. From core excavation to architectural handover, every milestone is managed by our dedicated in-house engineers, project managers, and quality supervisors. This ensures direct accountability and flawless execution."
+                  }
+                ].map((item, idx) => (
+                  <div key={idx} className={`why-choose-item ${whyActiveTab === idx ? 'active' : ''}`}>
+                    <div className="why-choose-item-header" onClick={() => setWhyActiveTab(idx)}>
+                      <h3>{item.title}</h3>
+                      <span className="why-choose-item-arrow">
+                        <i className={`fa-solid ${whyActiveTab === idx ? 'fa-minus' : 'fa-plus'}`}></i>
+                      </span>
+                    </div>
+                    <div className="why-choose-item-body">
+                      <p>{item.content}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      </>
+    )}
+
+      {currentTab === 'packages' && (
+        <section className="pkg-page-section">
+          <div className="container">
+            {/* Breadcrumbs */}
+            <div className="pkg-breadcrumbs">
+              <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('home'); }}>Home</a>
+              <span>/</span>
+              <span className="active">Packages</span>
+            </div>
+
+            {/* Main header */}
+            <div className="pkg-header">
+              <h1 className="pkg-main-title">Packages</h1>
+              <div className="pkg-city-select">
+                <span>Currently Showing for</span>
+                <div className="pkg-dropdown-wrap">
+                  <i className="fa-solid fa-location-dot pkg-pin"></i>
+                  <select defaultValue="Bengaluru">
+                    <option value="Bengaluru">Bengaluru</option>
+                    <option value="Mysuru">Mysuru</option>
+                    <option value="Chennai">Chennai</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div className="pkg-city-banner">
+              <h2>Bengaluru</h2>
+            </div>
+
+            {/* Grid of 12 Package Cards */}
+            <div className="pkg-grid">
+              {detailedPackagesData.map((pkg, idx) => (
+                <div
+                  key={idx}
+                  className={`pkg-card ${selectedPkgIndex === idx ? 'active' : ''}`}
+                  onClick={() => {
+                    setSelectedPkgIndex(idx);
+                    setExpandedSecIndex(0); // expand first section by default
+                  }}
+                >
+                  <div className="pkg-card-icon" style={{ backgroundColor: pkg.color }}>
+                    <i className={pkg.icon}></i>
+                  </div>
+                  <div className="pkg-card-info">
+                    <h3>{pkg.name}</h3>
+                    <p>{pkg.price}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Banner Callout */}
+            <div className="pkg-banner-callout" style={{ backgroundImage: 'url(/hero_house_bg.png)', backgroundPosition: 'center', backgroundSize: 'cover' }}>
+              <div className="pkg-banner-overlay">
+                <div className="pkg-banner-left">
+                  <h3>Looking for a personalized home construction?</h3>
+                </div>
+                <div className="pkg-banner-right">
+                  <button className="pkg-contact-btn" onClick={() => setIsModalOpen(true)}>Contact Us</button>
+                </div>
+              </div>
+            </div>
+
+            {/* Package Details Accordions (Dynamic for Selected Package) */}
+            <div className="pkg-details-section">
+              <div className="pkg-details-header">
+                <h2>{detailedPackagesData[selectedPkgIndex].name} Package Details</h2>
+                <span className="pkg-details-price">{detailedPackagesData[selectedPkgIndex].price}</span>
+              </div>
+
+              <div className="pkg-details-accordion">
+                {Object.entries(detailedPackagesData[selectedPkgIndex].sections).map(([secTitle, secBullets], secIdx) => {
+                  const isExpanded = expandedSecIndex === secIdx;
+                  return (
+                    <div key={secIdx} className={`pkg-detail-row ${isExpanded ? 'expanded' : ''}`}>
+                      <div className="pkg-detail-row-header" onClick={() => setExpandedSecIndex(isExpanded ? null : secIdx)}>
+                        <span>{secTitle}</span>
+                        <div className="pkg-detail-arrow">
+                          <i className={`fa-solid ${isExpanded ? 'fa-chevron-down' : 'fa-chevron-right'}`}></i>
+                        </div>
+                      </div>
+                      <div className="pkg-detail-row-body">
+                        {secBullets.length > 0 ? (
+                          <ul className="pkg-bullets-list">
+                            {secBullets.map((bullet, bIdx) => (
+                              <li key={bIdx}>
+                                <i className="fa-solid fa-circle-check bullet-icon"></i>
+                                <span>{bullet}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <ul className="pkg-bullets-list">
+                            {standardSectionDetails[secTitle]?.map((bullet, bIdx) => (
+                              <li key={bIdx}>
+                                <i className="fa-solid fa-circle-check bullet-icon"></i>
+                                <span>{bullet}</span>
+                              </li>
+                            )) || (
+                              <li>
+                                <i className="fa-solid fa-circle-check bullet-icon"></i>
+                                <span>Premium materials and specifications as per turnkey standards.</span>
+                              </li>
+                            )}
+                          </ul>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+          </div>
+        </section>
+      )}
+
+      {currentTab === 'contact' && (
+        <section className="contact-page-section">
+          <div className="container">
+            {/* Breadcrumbs */}
+            <div className="pkg-breadcrumbs" style={{ marginBottom: '30px' }}>
+              <a href="#" onClick={(e) => { e.preventDefault(); handleNavigation('home'); }}>Home</a>
+              <span>/</span>
+              <span className="active">Contact Us</span>
+            </div>
+
+            {/* Grid Container */}
+            <div className="contact-grid">
+              {/* Card 1: Couple Overlooking sunset/house image */}
+              <div
+                className="contact-img-card"
+                style={{
+                  backgroundImage: 'url(/contact_couple.png)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
+              />
+
+              {/* Card 2: Get In Touch details */}
+              <div className="contact-details-card">
+                <div className="contact-teal-label">Get In Touch</div>
+                <div className="contact-title-row">
+                  <span className="contact-house-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" width="45" height="45">
+                      <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                      <polyline points="9 22 9 12 15 12 15 22" />
+                    </svg>
+                  </span>
+                  <h2>We'll Craft Your Perfect Dream Home</h2>
+                </div>
+                <div className="contact-text-divider"></div>
+                <p>At buildAhome, we're here to turn your dream house construction into reality.</p>
+                <p>For personalized consultations, expert advice, or any inquires, please reach out to our dedicated team. Your dream home starts with us.</p>
+                <h4 style={{ textAlign: 'center', marginTop: '20px' }}>Contact us today!</h4>
+              </div>
+
+              {/* Card 3: Lets Talk Form */}
+              <div className="contact-form-card">
+                <h2>Lets Talk</h2>
+                <form onSubmit={handleContactFormSubmit}>
+                  <div className="contact-form-group">
+                    <label htmlFor="contact-name">Name*</label>
+                    <input
+                      type="text"
+                      id="contact-name"
+                      className="contact-form-control"
+                      placeholder="Enter your name"
+                      value={contactFormData.name}
+                      onChange={(e) => setContactFormData({ ...contactFormData, name: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div className="contact-form-group">
+                    <label htmlFor="contact-phone">Phone No*</label>
+                    <div className="contact-phone-wrap">
+                      <div className="contact-phone-prefix">
+                        <span style={{ fontSize: '16px' }}>🇮🇳</span>
+                        <span>+91</span>
+                      </div>
+                      <input
+                        type="tel"
+                        id="contact-phone"
+                        className="contact-form-control contact-phone-input"
+                        placeholder="81234 56789"
+                        pattern="[0-9]{10}"
+                        value={contactFormData.phone}
+                        onChange={(e) => setContactFormData({ ...contactFormData, phone: e.target.value })}
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="contact-form-group">
+                    <label htmlFor="contact-location">Location*</label>
+                    <select
+                      id="contact-location"
+                      className="contact-form-control"
+                      value={contactFormData.location}
+                      onChange={(e) => setContactFormData({ ...contactFormData, location: e.target.value })}
+                      required
+                    >
+                      <option value="">--Select Location--</option>
+                      <option value="Jayanagar">Jayanagar, Bengaluru</option>
+                      <option value="Whitefield">Whitefield, Bengaluru</option>
+                      <option value="Indiranagar">Indiranagar, Bengaluru</option>
+                      <option value="Kengeri">Kengeri, Bengaluru</option>
+                      <option value="Malleshwaram">Malleshwaram, Bengaluru</option>
+                      <option value="Mysuru">Mysuru, Karnataka</option>
+                      <option value="Other">Other Parts of Karnataka / Tamilnadu</option>
+                    </select>
+                  </div>
+
+                  <div className="contact-form-group">
+                    <label htmlFor="contact-plot-size">Plot Size*</label>
+                    <select
+                      id="contact-plot-size"
+                      className="contact-form-control"
+                      value={contactFormData.plotSize}
+                      onChange={(e) => setContactFormData({ ...contactFormData, plotSize: e.target.value })}
+                      required
+                    >
+                      <option value="">--Select Plot Size--</option>
+                      <option value="30x30 Ft (900 Sq. Ft.)">30x30 Ft (900 Sq. Ft.)</option>
+                      <option value="30x40 Ft (1200 Sq. Ft.)">30x40 Ft (1200 Sq. Ft.)</option>
+                      <option value="40x40 Ft (1600 Sq. Ft.)">40x40 Ft (1600 Sq. Ft.)</option>
+                      <option value="40x60 Ft (2400 Sq. Ft.)">40x60 Ft (2400 Sq. Ft.)</option>
+                      <option value="50x80 Ft (4000 Sq. Ft.)">50x80 Ft (4000 Sq. Ft.)</option>
+                      <option value="Custom Plot Size">Other Plot Size</option>
+                    </select>
+                  </div>
+
+                  <div className="contact-form-group">
+                    <label htmlFor="contact-requirements">Construction Requirements*</label>
+                    <input
+                      type="text"
+                      id="contact-requirements"
+                      className="contact-form-control"
+                      placeholder="Minimum 3 Characters"
+                      minLength="3"
+                      value={contactFormData.requirements}
+                      onChange={(e) => setContactFormData({ ...contactFormData, requirements: e.target.value })}
+                      required
+                    />
+                  </div>
+
+                  <div className="contact-check-group">
+                    <input
+                      type="checkbox"
+                      id="contact-authCheck"
+                      checked={contactFormData.authCheck}
+                      onChange={(e) => setContactFormData({ ...contactFormData, authCheck: e.target.checked })}
+                      required
+                    />
+                    <label htmlFor="contact-authCheck">
+                      I authorize buildAhome & its representatives to contact me with updates and notifications via Email/SMS/WhatsApp/Call. This will override DND/NDNC settings.
+                    </label>
+                  </div>
+
+                  <button type="submit" className="contact-submit-btn">Submit</button>
+                </form>
+              </div>
+
+              {/* Card 4: Info with construction engineer overlay */}
+              <div
+                className="contact-info-card"
+                style={{
+                  backgroundImage: 'url(/contact_engineer.png)',
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat'
+                }}
+              >
+                <div className="contact-info-overlay">
+                  <h3>Make your DREAM home your REAL home.</h3>
+                  <span className="contact-info-sub">Get Connected</span>
+                  <div className="contact-info-footer">
+                    <div className="contact-info-row" style={{ marginBottom: '15px' }}>
+                      <i className="fa-solid fa-phone"></i>
+                      <span>Call us: 7090005600</span>
+                    </div>
+                    <div className="contact-info-row">
+                      <i className="fa-solid fa-envelope"></i>
+                      <span>Mail us at: contact@buildahome.in</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FOOTER */}
       <footer className="footer">
@@ -1397,16 +2805,16 @@ export default function App() {
 
             <div className="footer-links-col">
               <ul className="footer-links-list">
-                <li><a href="#about">Our Homes</a></li>
-                <li><a href="#about">Green Homes</a></li>
-                <li><a href="#how-it-works">How It Works</a></li>
-                <li><a href="#packages">Popular Packages</a></li>
+                <li><a href="#our-homes" onClick={(e) => { e.preventDefault(); handleNavigation('our-homes'); }}>Our Homes</a></li>
+                <li><a href="#about" onClick={(e) => { e.preventDefault(); handleNavigation('home', 'about'); }}>Green Homes</a></li>
+                <li><a href="#how-it-works" onClick={(e) => { e.preventDefault(); handleNavigation('how-it-works'); }}>How It Works</a></li>
+                <li><a href="#packages" onClick={(e) => { e.preventDefault(); handleNavigation('packages'); }}>Popular Packages</a></li>
               </ul>
               <ul className="footer-links-list">
-                <li><a href="#faqs">FAQs</a></li>
-                <li><a href="#completed-works">Completed Projects</a></li>
+                <li><a href="#faqs" onClick={(e) => { e.preventDefault(); handleNavigation('home', 'faqs'); }}>FAQs</a></li>
+                <li><a href="#completed-works" onClick={(e) => { e.preventDefault(); handleNavigation('home', 'completed-works'); }}>Completed Projects</a></li>
                 <li><a href="#" onClick={() => setIsModalOpen(true)}>Privacy & Policy</a></li>
-                <li><a href="#" onClick={() => setIsModalOpen(true)}>Contact Swaragh</a></li>
+                <li><a href="#contact" onClick={(e) => { e.preventDefault(); handleNavigation('contact'); }}>Contact Us</a></li>
               </ul>
             </div>
           </div>
